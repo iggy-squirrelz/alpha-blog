@@ -3,18 +3,19 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
-  def create
-    @article = Article.new(article_params)
-    if @article.save 
-      flash[:notice] = "Sweetness! Success is yours, here's your post."
-      redirect_to article_path(@article)
-    else
-      render 'new'
-    end
+  def edit
 
-    def show
-      @article = Article.find(params[:id])
-    end
+  end
+
+  def show
+    @article = Article.find(params[:id])
+  end
+
+  def create
+    
+    @article = Article.new(article_params)
+    @article.save
+    redirect_to articles_show(@article)
   end
 
   private
